@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Educacional - Recursos para Ensino e Pesquisa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --unesco-blue: #009EDB;
+            --edu-green: #4CAF50;
+            --white: #FFFFFF;
+            --graphite: #2D3748;
+            --light-gray: #F7FAFC;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+            --transition: all 0.3s ease;
+            --purple: #8A2BE2;
+            --orange: #FF9800;
+            --red: #F44336;
+            --amber: #FFC107;
+            --dark-blue: #1565C0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--graphite);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, var(--unesco-blue), #0077b6);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .logo-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 158, 219, 0.1), rgba(255, 255, 255, 0.9)), 
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="%23009EDB" opacity="0.3"/><path d="M50,20 L80,50 L50,80 L20,50 Z" stroke="%23009EDB" stroke-width="0.5" fill="none" opacity="0.2"/><path d="M20,20 L80,80 M80,20 L20,80" stroke="%234CAF50" stroke-width="0.3" opacity="0.2"/></svg>');
+            padding: 80px 0 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--graphite);
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--graphite);
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-weight: 400;
+        }
+
+        .hero-pattern {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            background: linear-gradient(90deg, var(--unesco-blue), var(--edu-green));
+            opacity: 0.1;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 70px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--graphite);
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--unesco-blue), var(--edu-green));
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 20px auto 0;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-header {
+            padding: 25px 25px 15px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+
+        .card-icon {
+            font-size: 2.2rem;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--graphite);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-unesco {
+            background-color: rgba(0, 158, 219, 0.15);
+            color: var(--unesco-blue);
+        }
+
+        .badge-research {
+            background-color: rgba(76, 175, 80, 0.15);
+            color: var(--edu-green);
+        }
+
+        .badge-planning {
+            background-color: rgba(21, 101, 192, 0.15);
+            color: var(--dark-blue);
+        }
+
+        .badge-diagnostic {
+            background-color: rgba(255, 193, 7, 0.15);
+            color: #FF8F00;
+        }
+
+        .badge-tool {
+            background-color: rgba(138, 43, 226, 0.15);
+            color: var(--purple);
+        }
+
+        .badge-latex {
+            background-color: rgba(0, 150, 136, 0.15);
+            color: #00897B;
+        }
+
+        .card-body {
+            padding: 0 25px 20px;
+            flex-grow: 1;
+        }
+
+        .card-description {
+            color: #555;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .card-highlight {
+            background-color: rgba(0, 158, 219, 0.05);
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: var(--graphite);
+            margin-bottom: 20px;
+            border-left: 3px solid var(--unesco-blue);
+        }
+
+        .card-footer {
+            padding: 0 25px 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-size: 0.95rem;
+            width: 100%;
+        }
+
+        .btn-blue {
+            background-color: var(--unesco-blue);
+            color: white;
+        }
+
+        .btn-blue:hover {
+            background-color: #0082c0;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 158, 219, 0.3);
+        }
+
+        .btn-green {
+            background-color: var(--edu-green);
+            color: white;
+        }
+
+        .btn-green:hover {
+            background-color: #43a047;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .btn-amber {
+            background-color: var(--amber);
+            color: var(--graphite);
+        }
+
+        .btn-amber:hover {
+            background-color: #ffb300;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
+        }
+
+        .btn-purple {
+            background-color: var(--purple);
+            color: white;
+        }
+
+        .btn-purple:hover {
+            background-color: #7b1fa2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
+        }
+
+        .btn-orange {
+            background-color: var(--orange);
+            color: white;
+        }
+
+        .btn-orange:hover {
+            background-color: #f57c00;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.3);
+        }
+
+        .btn-dark-blue {
+            background-color: var(--dark-blue);
+            color: white;
+        }
+
+        .btn-dark-blue:hover {
+            background-color: #0d47a1;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(21, 101, 192, 0.3);
+        }
+
+        .btn-red {
+            background-color: var(--red);
+            color: white;
+        }
+
+        .btn-red:hover {
+            background-color: #e53935;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(244, 67, 54, 0.3);
+        }
+
+        .btn-teal {
+            background-color: #00897B;
+            color: white;
+        }
+
+        .btn-teal:hover {
+            background-color: #00695C;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 137, 123, 0.3);
+        }
+
+        .external-link {
+            position: relative;
+            padding-right: 30px;
+        }
+
+        .external-link::after {
+            content: '↗';
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.9rem;
+        }
+
+        /* Category Sections */
+        .category-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+            color: var(--graphite);
+        }
+
+        .research-category {
+            background-color: #E8F5E9;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        .planning-category {
+            background-color: #E3F2FD;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        .diagnostic-category {
+            background-color: #FFF3E0;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        /* Filter System */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            background-color: var(--light-gray);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 30px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--unesco-blue);
+            color: white;
+        }
+
+        /* Search Bar */
+        .search-container {
+            max-width: 500px;
+            margin: 0 auto 40px;
+            position: relative;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 50px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            font-size: 1rem;
+            padding-left: 50px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .search-bar:focus {
+            outline: none;
+            border-color: var(--unesco-blue);
+            box-shadow: 0 4px 15px rgba(0, 158, 219, 0.2);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--graphite);
+            color: white;
+            padding: 50px 0 30px;
+            margin-top: 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-title {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .developer-info {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .developer-info a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .developer-info a:hover {
+            color: var(--unesco-blue);
+            text-decoration: underline;
+        }
+
+        .footer-disclaimer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.5;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .cards-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 25px;
+                right: 20px;
+            }
+            
+            .mobile-nav {
+                display: none;
+                width: 100%;
+                margin-top: 20px;
+            }
+            
+            .mobile-nav.active {
+                display: block;
+            }
+            
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            section {
+                padding: 50px 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .filter-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .filter-btn {
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <div class="logo-text">Portal Educacional</div>
+                        <div class="logo-subtitle">Recursos para Ensino e Pesquisa com Inteligência Artificial</div>
+                    </div>
+                </div>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <nav class="mobile-nav" id="mobileNav">
+                    <ul>
+                        <li><a href="#unesco">UNESCO</a></li>
+                        <li><a href="#gems">Gems</a></li>
+                        <li><a href="#tools">Ferramentas</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Portal Educacional - Recursos para Ensino e Pesquisa</h1>
+            <p class="hero-subtitle">Ferramentas, diretrizes e gems para potencializar a educação com tecnologia</p>
+            <div class="hero-pattern"></div>
+        </div>
+    </section>
+
+    <!-- UNESCO Documents Section -->
+    <section id="unesco">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Diretrizes e Recomendações Oficiais</h2>
+                <p class="section-subtitle">Documentos essenciais para compreensão ética e pedagógica da IA</p>
+            </div>
+            
+            <div class="cards-grid">
+                <!-- Document 1 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">📘</div>
+                        <div style="flex-grow: 1;">
+                            <h3 class="card-title">Guia para IA Generativa na Educação e Pesquisa</h3>
+                            <span class="badge badge-unesco">PDF Oficial</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-description">Documento oficial com orientações práticas para implementação responsável de IA generativa em contextos educacionais e de pesquisa.</p>
+                        <div class="card-highlight">Publicação UNESCO - Diretrizes globais</div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://drive.google.com/file/d/1M9e8JqpUOJQmINSohzNxO8GPT1pN3qvS/view?usp=sharing" target="_blank" class="btn btn-blue">BAIXAR GUIA</a>
+                    </div>
+                </div>
+                
+                <!-- Document 2 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">⚖️</div>
+                        <div style="flex-grow: 1;">
+                            <h3 class="card-title">Recomendação sobre a Ética da Inteligência Artificial</h3>
+                            <span class="badge badge-unesco">Documento Normativo</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-description">Diretrizes éticas globais para desenvolvimento e uso responsável de sistemas de IA na educação e sociedade.</p>
+                        <div class="card-highlight">Normativa internacional - Adoção por 193 países</div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://drive.google.com/file/d/1-e9YEZsQfXd8o1TNG1m6S1JhL7PxkJZ8/view?usp=sharing" target="_blank" class="btn btn-blue">BAIXAR RECOMENDAÇÃO</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gems Section -->
+    <section id="gems" style="background-color: #f9f9f9;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Ferramentas Práticas para Educadores</h2>
+                <p class="section-subtitle">Gems interativos para planejamento, criação e avaliação educacional</p>
+            </div>
+            
+            <!-- Search Bar -->
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-bar" id="searchBar" placeholder="Pesquisar gems por nome, categoria ou descrição...">
+            </div>
+            
+            <!-- Filter Buttons -->
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="research">Pesquisa</button>
+                <button class="filter-btn" data-filter="planning">Planejamento</button>
+                <button class="filter-btn" data-filter="diagnostic">Diagnóstico</button>
+            </div>
+            
+            <!-- Research Category -->
+            <div class="research-category">
+                <h3 class="category-title">Pesquisa Acadêmica</h3>
+                <div class="cards-grid">
+                    <!-- Gem 1 -->
+                    <div class="card" data-category="research">
+                        <div class="card-header">
+                            <div class="card-icon">🔍</div>
+                            <div style="flex-grow: 1;">
+                                <h3 class="card-title">Revisão Sistemática de Literatura</h3>
+                                <span class="badge badge-research">Metodologia Científica</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-description">Protocolo PRISMA para conduzir revisões sistemáticas de forma metodológica e organizada.</p>
+                            <div class="card-highlight">Baseado no protocolo PRISMA - Ideal para pesquisa acadêmica</div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://gemini.google.com/gem/1TuCOt2jdvaYj0swcfdN6xNnnIF6FWs4F?usp=sharing" target="_blank" class="btn btn-green external-link">ACESSAR GEM</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Gem 2 -->
+                    <div class="card" data-category="research">
+                        <div class="card-header">
+                            <div class="card-icon">📊</div>
+                            <div style="flex-grow: 1;">
+                                <h3 class="card-title">Análise Crítica de Literatura Científica</h3>
+                                <span class="badge badge-research">Pensamento Crítico</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-description">Ferramenta para avaliação crítica de artigos e pesquisas acadêmicas.</p>
+                            <div class="card-highlight">Desenvolva habilidades de análise crítica de artigos científicos</div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://gemini.google.com/gem/1r8QsWW0dixUA4uODh6IhqFPCe_SHeZyS?usp=sharing" target="_blank" class="btn btn-green external-link">ACESSAR GEM</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Planning Category -->
+            <div class="planning-category">
+                <h3 class="category-title">Planejamento Educacional</h3>
+                <div class="cards-grid">
+                    <!-- Gem 3 -->
+                    <div class="card" data-category="planning">
+                        <div class="card-header">
+                            <div class="card-icon">🎯</div>
+                            <div style="flex-grow: 1;">
+                                <h3 class="card-title">Criador de Projeto Final de Disciplina</h3>
+                                <span class="badge badge-planning">Estruturação</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-description">Estrutura completa para desenvolvimento de projetos finais de curso ou disciplina.</p>
+                            <div class="card-highlight">Guia passo a passo para projetos acadêmicos finais</div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://gemini.google.com/gem/1ahV55hQ9aNbWBvJ4feSzx-XLZTWE_nu2?usp=sharing" target="_blank" class="btn btn-dark-blue external-link">ACESSAR GEM</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Gem 4 -->
+                    <div class="card" data-category="planning">
+                        <div class="card-header">
+                            <div class="card-icon">📚</div>
+                            <div style="flex-grow: 1;">
+                                <h3 class="card-title">Criador de Materiais Didáticos</h3>
+                                <span class="badge badge-planning">Criação</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-description">Assistente para criação de materiais de ensino personalizados e engajadores.</p>
+                            <div class="card-highlight">Gere materiais didáticos alinhados com seus objetivos de aprendizagem</div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://gemini.google.com/gem/1i5vU2X3cvqlNewOAz9KbJ6ANGrzGtuu6?usp=sharing" target="_blank" class="btn btn-dark-blue external-link">ACESSAR GEM</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Gem 5 -->
+                    <div class="card" data-category="planning">
+                        <div class="card-header">
+                            <div class="card-icon">✏️</div>
+                            <div style="flex-grow: 1;">
+                                <h3 class="card-title">Criador de Avaliações</h3>
+                                <span class="badge badge-planning">Avaliação</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-description">Gerador de instrumentos avaliativos alinhados com objetivos de aprendizagem.</p>
+                            <div class="card-highlight">Crie avaliações formativas e somativas com diversos tipos de questões</div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://gemini.google.com/gem/1A7raL_FRwXaXbeNYZYAV4-1d_fLfMHhl?usp=sharing" target="_blank" class="btn btn-dark-blue external-link">ACESSAR GEM</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Gem 6 -->
+                    <div class="card" data-category="planning">
+                        <div class="card-header">
+                            <div class="card-icon">🗓️</div>
+                            <div style="flex-grow: 1;">
+                                <h3 class="card-title">Gerador de Aulas a partir do Plano de Ensino</h3>
+                                <span class="badge badge-planning">Sequenciamento</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-description">Transforme seu plano de ensino em sequências didáticas completas.</p>
+                            <div class="card-highlight">Converta planos macro em planos de aula detalhados</div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://gemini.google.com/gem/1s5mhSUxnoyzt6Z9gTadfyPnqGbUq2kV3?usp=sharing" target="_blank" class="btn btn-dark-blue external-link">ACESSAR GEM</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Gem 7 -->
+                    <div class="card" data-category="planning">
+                        <div class="card-header">
+                            <div class="card-icon">📝</div>
+                            <div style="flex-grow: 1;">
+                                <h3 class="card-title">Gerador de Plano de Aula</h3>
+                                <span class="badge badge-planning">Planejamento Diário</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-description">Crie planos de aula estruturados com objetivos, metodologias e avaliações.</p>
+                            <div class="card-highlight">Estrutura completa para aulas eficazes e engajadoras</div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://gemini.google.com/gem/1C75sHYEgcgt0MLGLFMPjrunnAeRaH9JI?usp=sharing" target="_blank" class="btn btn-dark-blue external-link">ACESSAR GEM</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Gem 8 -->
+                    <div class="card" data-category="planning">
+                        <div class="card-header">
+                            <div class="card-icon">🏫</div>
+                            <div style="flex-grow: 1;">
+                                <h3 class="card-title">Gerador de Plano de Ensino</h3>
+                                <span class="badge badge-planning">Planejamento Macro</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-description">Desenvolva planos de ensino completos para disciplinas e cursos.</p>
+                            <div class="card-highlight">Estruture disciplinas inteiras com ementas, objetivos e cronogramas</div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://gemini.google.com/gem/1JTCBbLyWvPhIOg2tmC7czkgvtgZbzl9C?usp=sharing" target="_blank" class="btn btn-dark-blue external-link">ACESSAR GEM</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Diagnostic Category -->
+            <div class="diagnostic-category">
+                <h3 class="category-title">Diagnóstico Educacional</h3>
+                <div class="cards-grid">
+                    <!-- Gem 9 -->
+                    <div class="card" data-category="diagnostic">
+                        <div class="card-header">
+                            <div class="card-icon">🔬</div>
+                            <div style="flex-grow: 1;">
+                                <h3 class="card-title">Diagnóstico de Aprendizagem e Pré-requisitos</h3>
+                                <span class="badge badge-diagnostic">Avaliação Diagnóstica</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-description">Ferramenta para identificar conhecimentos prévios e necessidades de aprendizagem.</p>
+                            <div class="card-highlight">Identifique lacunas de conhecimento e personalize o ensino</div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://gemini.google.com/gem/9034146dd69b?usp=sharing" target="_blank" class="btn btn-amber external-link">ACESSAR GEM</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section id="tools">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Plataformas para Educação e Pesquisa</h2>
+                <p class="section-subtitle">Ferramentas especializadas para potencializar seu trabalho acadêmico</p>
+            </div>
+            
+            <div class="cards-grid">
+                <!-- Tool 1 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🧠</div>
+                        <div style="flex-grow: 1;">
+                            <h3 class="card-title">NotebookLM</h3>
+                            <span class="badge badge-tool">Análise de múltiplas fontes</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-description">Ambiente de pesquisa inteligente que organiza e conecta ideias de seus documentos.</p>
+                        <div class="card-highlight">Integração com Google Drive - Análise de documentos em múltiplos formatos</div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://notebooklm.google/" target="_blank" class="btn btn-purple external-link">VISITAR PLATAFORMA</a>
+                    </div>
+                </div>
+                
+                <!-- Tool 2 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🔎</div>
+                        <div style="flex-grow: 1;">
+                            <h3 class="card-title">Trinka Journal Finder</h3>
+                            <span class="badge badge-tool">Match de publicações</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-description">Encontre as revistas ideais para publicação do seu trabalho acadêmico.</p>
+                        <div class="card-highlight">Base de dados com milhares de periódicos - Análise de compatibilidade</div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://www.trinka.ai/journal-finder" target="_blank" class="btn btn-green external-link">VISITAR PLATAFORMA</a>
+                    </div>
+                </div>
+                
+                <!-- Tool 3 - Prism atualizado -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">📝</div>
+                        <div style="flex-grow: 1;">
+                            <h3 class="card-title">OpenAI Prism</h3>
+                            <span class="badge badge-latex">Editor LaTeX</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-description">Editor de texto acadêmico com suporte a LaTeX, voltado à escrita, organização e formatação de textos científicos.</p>
+                        <div class="card-highlight">Suporte completo a LaTeX - Formatação acadêmica profissional - Colaboração em tempo real</div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://prism.openai.com/" target="_blank" class="btn btn-teal external-link">VISITAR PLATAFORMA</a>
+                    </div>
+                </div>
+                
+                <!-- Tool 4 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">💡</div>
+                        <div style="flex-grow: 1;">
+                            <h3 class="card-title">Elicit</h3>
+                            <span class="badge badge-tool">Síntese automática</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-description">Assistente de pesquisa que encontra e sintetiza artigos acadêmicos.</p>
+                        <div class="card-highlight">Extraia informações de papers automaticamente - Resumos inteligentes</div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://elicit.com/" target="_blank" class="btn btn-orange external-link">VISITAR PLATAFORMA</a>
+                    </div>
+                </div>
+                
+                <!-- Tool 5 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🐇</div>
+                        <div style="flex-grow: 1;">
+                            <h3 class="card-title">Research Rabbit</h3>
+                            <span class="badge badge-tool">Mapeamento de pesquisas</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-description">Descoberta visual de artigos e mapeamento de conexões na literatura.</p>
+                        <div class="card-highlight">Mapas visuais de citações - Descobrimento de pesquisas relacionadas</div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://www.researchrabbit.ai/" target="_blank" class="btn btn-red external-link">VISITAR PLATAFORMA</a>
+                    </div>
+                </div>
+                
+                <!-- Tool 6 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🚀</div>
+                        <div style="flex-grow: 1;">
+                            <h3 class="card-title">Consensus / Scispace</h3>
+                            <span class="badge badge-tool">Análise de papers</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-description">Plataforma para exploração, leitura e compreensão de artigos científicos.</p>
+                        <div class="card-highlight">Explicação de trechos complexos - Tradução de termos técnicos</div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://scispace.com/" target="_blank" class="btn btn-blue external-link">VISITAR PLATAFORMA</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">Portal Educacional</h3>
+                    <p>Recursos para Ensino e Pesquisa com Tecnologia</p>
+                    <p style="margin-top: 15px; color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">
+                        <i class="fas fa-graduation-cap" style="margin-right: 8px;"></i> 
+                        Desenvolvido para educadores, pesquisadores e estudantes
+                    </p>
+                    
+                    <!-- Informações do Desenvolvedor -->
+                    <div class="developer-info">
+                        <p><strong>Desenvolvido por:</strong> Roberto Urzêda</p>
+                        <p><strong>Contato:</strong> <a href="mailto:roberto.paiva@ueg.br">roberto.paiva@ueg.br</a></p>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Navegação</h3>
+                    <ul class="footer-links">
+                        <li><a href="#unesco">Documentos UNESCO</a></li>
+                        <li><a href="#gems">Gems Educacionais</a></li>
+                        <li><a href="#tools">Ferramentas</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Recursos</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://www.unesco.org/" target="_blank">Site Oficial da UNESCO</a></li>
+                        <li><a href="https://gemini.google.com/" target="_blank">Google Gemini</a></li>
+                        <li><a href="https://openai.com/" target="_blank">OpenAI</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-disclaimer">
+                <p>© 2024 Portal Educacional</p>
+                <p style="margin-top: 10px;">Aviso: Este portal é educativo. Os recursos da UNESCO são públicos.</p>
+                <p>Os gems do Google Gemini requerem login na plataforma.</p>
+                <p>As ferramentas externas possuem seus próprios termos de uso.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.toggle('active');
+            
+            // Change icon
+            const icon = this.querySelector('i');
+            if (mobileNav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Filter functionality for gems
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const gemCards = document.querySelectorAll('.card[data-category]');
+        const searchBar = document.getElementById('searchBar');
+        
+        // Filter by category
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                const filterValue = this.getAttribute('data-filter');
+                
+                // Show/hide cards based on filter
+                gemCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Search functionality
+        searchBar.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase().trim();
+            
+            gemCards.forEach(card => {
+                const title = card.querySelector('.card-title').textContent.toLowerCase();
+                const description = card.querySelector('.card-description').textContent.toLowerCase();
+                const category = card.getAttribute('data-category');
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm) || category.includes(searchTerm)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('nav a, .footer-links a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                
+                // Only process internal links
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    
+                    const targetId = href.substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        // Close mobile menu if open
+                        const mobileNav = document.getElementById('mobileNav');
+                        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+                        const menuIcon = mobileMenuBtn.querySelector('i');
+                        
+                        if (mobileNav.classList.contains('active')) {
+                            mobileNav.classList.remove('active');
+                            menuIcon.classList.remove('fa-times');
+                            menuIcon.classList.add('fa-bars');
+                        }
+                        
+                        // Scroll to target
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+                // External links will open normally
+            });
+        });
+        
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe cards for animation
+        document.querySelectorAll('.card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
